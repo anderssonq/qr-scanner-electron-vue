@@ -9,6 +9,14 @@ yarn install
 ```
 yarn serve
 ```
+run in web dev
+
+```
+yarn electron:serve
+```
+run in desktop dev
+
+yarn build or yarn electron:build will create a production app
 
 ### Compiles and minifies for production
 ```
