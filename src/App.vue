@@ -1,20 +1,13 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        Fombox QR Scanner App
-      </div>
-      <v-spacer></v-spacer>
-    </v-app-bar>
-    <v-main>
-      <router-view></router-view>
-    </v-main>
-  </v-app>
+  <Content />
 </template>
 
 <script>
 export default {
   name: "App",
-  data: () => {}
+  components: {
+    Content: () => import("./views/Content/Content")
+  },
+  data: () => ({})
 };
 </script>

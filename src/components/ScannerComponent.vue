@@ -1,17 +1,18 @@
 <template>
-  <div>
-    <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream>
+  <div class="container-qr-scanner">
+    <qrcode-stream
+      class="container-qr"
+      @decode="onDecode"
+      @init="onInit"
+    ></qrcode-stream>
     <p class="error">{{ error }}</p>
-    <p>
-      Please put the Qr code in front of your web cam, below will display result
-      of it
-    </p>
-
-    <p class="decode-result">
-      Last result:
-      <a :href="result" target="_blank"
-        ><b>{{ result ? result : "No code scanned yet" }}</b></a
-      >
+    <p class="decode-result font-weight-bold mb-0" v-if="showResult">
+      Result:
+      <v-chip color="green" link @click="openBrowser(result)">
+        <p class="white--text mb-0">
+          {{ result ? result : "No code scanned yet" }}
+        </p>
+      </v-chip>
     </p>
   </div>
 </template>
@@ -22,9 +23,25 @@ export default {
     result: null,
     error: ""
   }),
+  props: {
+    showResult: {
+      type: Boolean,
+      default: () => false
+    }
+  },
+  watch: {
+    result: function() {
+      this.$emit("onResultListener", this.result);
+    }
+  },
   methods: {
     onDecode(result) {
       this.result = result;
+    },
+    openBrowser: function(qrcode) {
+      if (!qrcode) return;
+
+      window.open(qrcode.href, "_blank");
     },
     async onInit(promise) {
       try {
@@ -48,3 +65,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.container-qr-scanner {
+  width: 300px;
+}
+</style>
