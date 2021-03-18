@@ -5,8 +5,12 @@
       @decode="onDecode"
       @init="onInit"
     ></qrcode-stream>
-    <p class="error">{{ error }}</p>
-    <p class="decode-result font-weight-bold mb-0" v-if="showResult">
+    <v-chip color="red" v-if="error">
+      <p class="white--text mb-0">
+        {{ error }}
+      </p>
+    </v-chip>
+    <p class="display-1 font-weight-bold mb-0" v-if="showResult">
       Result:
       <v-chip color="green" link @click="openBrowser(result)">
         <p class="white--text mb-0">
@@ -68,6 +72,7 @@ export default {
 
 <style>
 .container-qr-scanner {
-  width: 300px;
+  width: 40%;
+  margin: auto;
 }
 </style>

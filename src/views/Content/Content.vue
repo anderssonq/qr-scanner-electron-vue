@@ -18,19 +18,19 @@
       class="pt-2"
     >
       <v-btn value="qrcode" color="primary">
-        <span>Scan a code</span>
+        <span class="body">Retrieve Meal</span>
 
         <v-icon>mdi-qrcode-scan</v-icon>
       </v-btn>
 
       <v-btn value="videos" color="primary">
-        <span>Videos</span>
+        <span class="body">Watch Our Videos</span>
 
         <v-icon>mdi-video-image</v-icon>
       </v-btn>
 
       <v-btn value="auth" color="primary">
-        <span>Admin</span>
+        <span class="body">Admin</span>
 
         <v-icon>mdi-shield-account-outline</v-icon>
       </v-btn>
